@@ -1,0 +1,133 @@
+.app-suggestions {
+  --suggestions-gap: 1rem;
+  --suggestions-card-radius: 8px;
+  --suggestions-text-color: var(--color-foreground, #1a1a1a);
+  --suggestions-bg: var(--color-background, #ffffff);
+  --suggestions-border: var(--color-border, #e0e0e0);
+  --suggestions-subdued: var(--color-foreground-subdued, #6b6b6b);
+
+  margin: 2rem 0;
+  font-family: inherit;
+}
+
+.app-suggestions__heading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--suggestions-text-color);
+  margin: 0 0 1rem;
+}
+
+.app-suggestions__container {
+  position: relative;
+}
+
+/* Grid layout */
+.app-suggestions__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--suggestions-gap);
+}
+
+/* Carousel layout */
+.app-suggestions__carousel {
+  display: flex;
+  gap: var(--suggestions-gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  padding-bottom: 0.5rem;
+}
+
+.app-suggestions__carousel .app-suggestions__card {
+  flex: 0 0 220px;
+  scroll-snap-align: start;
+}
+
+/* Card */
+.app-suggestions__card {
+  border: 1px solid var(--suggestions-border);
+  border-radius: var(--suggestions-card-radius);
+  overflow: hidden;
+  background: var(--suggestions-bg);
+  text-decoration: none;
+  color: var(--suggestions-text-color);
+  display: block;
+  transition: box-shadow 0.15s ease;
+}
+
+.app-suggestions__card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.app-suggestions__card-image {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+  background: #f5f5f5;
+}
+
+.app-suggestions__card-body {
+  padding: 0.75rem;
+}
+
+.app-suggestions__card-title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin: 0 0 0.25rem;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.app-suggestions__card-price {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.app-suggestions__card-reason {
+  font-size: 0.75rem;
+  color: var(--suggestions-subdued);
+  margin: 0.25rem 0 0;
+}
+
+/* Skeleton */
+.app-suggestions__skeleton {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--suggestions-gap);
+}
+
+.app-suggestions__skeleton-card {
+  border: 1px solid var(--suggestions-border);
+  border-radius: var(--suggestions-card-radius);
+  height: 280px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: suggestions-shimmer 1.5s infinite;
+}
+
+@keyframes suggestions-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Empty / Error state */
+.app-suggestions__empty,
+.app-suggestions__error {
+  text-align: center;
+  padding: 2rem;
+  color: var(--suggestions-subdued);
+  font-size: 0.875rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .app-suggestions__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

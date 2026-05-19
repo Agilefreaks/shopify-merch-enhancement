@@ -1,0 +1,10 @@
+api_version = "2024-07"
+uid = "1b96a422-a5b7-2839-ae40-0304316ce03490dc5dfd"
+
+[[extensions]]
+name = "Product Suggestions"
+handle = "suggestions-block"
+type = "theme"
+
+  [extensions.settings]
+    # Extension settings are defined in the block schema
